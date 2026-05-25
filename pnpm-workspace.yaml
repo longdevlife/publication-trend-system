@@ -1,3 +1,16 @@
 packages:
   - "apps/*"
   - "packages/*"
+
+# pnpm 10+ blocks postinstall scripts by default for security. We explicitly
+# allow these because they are required for the toolchain to work:
+#   - esbuild: Vite/tsx/Vitest need its native binary
+#   - msgpackr-extract: Metro bundler (Expo) — falls back to slow JS if disabled
+#   - protobufjs: used internally by @google/genai to compile proto files
+#   - @google/genai: Gemini SDK setup
+# All four are trusted, widely used, mainstream packages.
+allowBuilds:
+  '@google/genai': true
+  esbuild: true
+  msgpackr-extract: true
+  protobufjs: true
