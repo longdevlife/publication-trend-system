@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import { queryClient } from "./services/query-client";
+import { Toaster } from "@/components/ui/sonner";
 import "./theme/globals.css";
 
 const root = document.getElementById("root");
@@ -16,6 +17,7 @@ ReactDOM.createRoot(root).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <App />
+        <Toaster richColors closeButton position="top-right" />
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

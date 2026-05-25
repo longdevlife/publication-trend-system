@@ -13,3 +13,5 @@ export {
   type LoginFormValues,
   type RegisterFormValues,
 } from "./schemas/auth.schemas";
+export { LoginForm } from "./components/login-form";
+export { RegisterForm } from "./components/register-form";
