@@ -33,12 +33,21 @@ const EnvSchema = z.object({
 
 const parsed = EnvSchema.safeParse(process.env);
 if (!parsed.success) {
-  // Print clean field-level errors then exit. We do not throw — the stack trace
-  // is noise for config problems.
-  console.error("[env] Invalid environment variables:");
+  // Print a loud banner so the user does not miss this in the terminal.
+  // We don't throw — a stack trace is noise for config problems, and a
+  // boxed banner is easier to spot than a one-line Pino log.
+  console.error("");
+  console.error("  ┌──────────────────────────────────────────────────────────┐");
+  console.error("  │  ❌  Cannot start backend — invalid .env                 │");
+  console.error("  │                                                          │");
   for (const issue of parsed.error.issues) {
-    console.error(`  - ${issue.path.join(".")}: ${issue.message}`);
+    const msg = `     - ${issue.path.join(".")}: ${issue.message}`;
+    console.error(`  │${msg.padEnd(58)}│`);
   }
+  console.error("  │                                                          │");
+  console.error("  │  Fix apps/backend/.env then re-run pnpm dev:backend      │");
+  console.error("  └──────────────────────────────────────────────────────────┘");
+  console.error("");
   process.exit(1);
 }
 
