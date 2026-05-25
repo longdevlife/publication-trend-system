@@ -7,7 +7,7 @@ export const apiRouter: Router = Router();
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/papers", paperRouter);
 
-// More routers will be mounted here:
+// More routers will be mounted here as modules land:
 //   apiRouter.use("/search", searchRouter);
 //   apiRouter.use("/trends", trendRouter);
 //   apiRouter.use("/reports", reportRouter);

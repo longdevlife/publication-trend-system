@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AppError } from "../../lib/error.js";
-import { PaperModel } from "./paper.model.js";
+import { AppError } from "../../common/exceptions/app-error.js";
+import { PaperModel } from "./models/paper.model.js";
 
 export const paperRouter: Router = Router();
 

@@ -5,8 +5,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
-import { queryClient } from "./lib/query-client";
-import "./index.css";
+import { queryClient } from "./services/query-client";
+import "./theme/globals.css";
 
 const root = document.getElementById("root");
 if (!root) throw new Error("Missing #root element");

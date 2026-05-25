@@ -3,10 +3,10 @@ import bcrypt from "bcryptjs";
 import jwt, { type SignOptions } from "jsonwebtoken";
 import type { AuthResponse, AuthTokens, User } from "@trend/shared-types";
 import { env } from "../../config/env.js";
-import { AppError } from "../../lib/error.js";
-import type { AuthClaims } from "../../middleware/auth.js";
-import { RefreshTokenModel, UserModel, type UserDoc } from "./user.model.js";
-import type { LoginInput, RegisterInput } from "./auth.schema.js";
+import { AppError } from "../../common/exceptions/app-error.js";
+import type { AuthClaims } from "../../common/middleware/auth.js";
+import { RefreshTokenModel, UserModel, type UserDoc } from "./models/user.model.js";
+import type { LoginInput, RegisterInput } from "./dto/auth.schema.js";
 
 const BCRYPT_ROUNDS = 10;
 
@@ -106,8 +106,8 @@ function toUserDto(user: UserDoc): User {
     email: user.email,
     fullName: user.fullName,
     role: user.role,
-    avatarUrl: user.avatarUrl,
-    institution: user.institution,
+    avatarUrl: user.avatarUrl ?? undefined,
+    institution: user.institution ?? undefined,
     researchInterests: user.researchInterests,
     createdAt: (user as unknown as { createdAt: Date }).createdAt.toISOString(),
     updatedAt: (user as unknown as { updatedAt: Date }).updatedAt.toISOString(),

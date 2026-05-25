@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { LoginInput, RefreshInput, RegisterInput } from "./auth.schema.js";
+import type { LoginInput, RefreshInput, RegisterInput } from "./dto/auth.schema.js";
 import { authService } from "./auth.service.js";
 
 export const authController = {

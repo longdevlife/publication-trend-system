@@ -4,8 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { queryClient } from "@/lib/query-client";
-import "../global.css";
+import { queryClient } from "@/services/query-client";
+import "../src/theme/globals.css";
 
 export default function RootLayout() {
   return (

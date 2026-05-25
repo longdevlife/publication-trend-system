@@ -3,10 +3,10 @@
 // Two non-default things matter here:
 //   1. `watchFolders` so Metro notices changes in workspace packages like
 //      `@trend/shared-types` outside this app's directory.
-//   2. `nodeModulesPaths` + `disableHierarchicalLookup: false` so the bundler
+//   2. `nodeModulesPaths` + `disableHierarchicalLookup: true` so the bundler
 //      can resolve hoisted deps from the repo-root `node_modules`.
 //
-// Also wires up NativeWind v4 so Tailwind classes work on React Native.
+// Also wires up NativeWind v4 with the Tailwind entry in src/theme/.
 
 const path = require("node:path");
 const { getDefaultConfig } = require("expo/metro-config");
@@ -24,4 +24,4 @@ config.resolver.nodeModulesPaths = [
 ];
 config.resolver.disableHierarchicalLookup = true;
 
-module.exports = withNativeWind(config, { input: "./global.css" });
+module.exports = withNativeWind(config, { input: "./src/theme/globals.css" });

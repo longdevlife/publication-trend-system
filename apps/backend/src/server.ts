@@ -1,8 +1,8 @@
 import { env } from "./config/env.js";
 import { createApp } from "./app.js";
-import { connectMongo, disconnectMongo } from "./lib/db.js";
-import { connectRedis, disconnectRedis } from "./lib/redis.js";
-import { logger } from "./lib/logger.js";
+import { connectMongo, disconnectMongo } from "./infrastructure/db.js";
+import { connectRedis, disconnectRedis } from "./infrastructure/redis.js";
+import { logger } from "./infrastructure/logger.js";
 
 async function main() {
   await connectMongo();

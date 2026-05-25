@@ -1,12 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 import { env } from "../../config/env.js";
-import { logger } from "../../lib/logger.js";
+import { logger } from "../../infrastructure/logger.js";
 
 /**
  * Thin singleton wrapper around the Google GenAI SDK.
  *
- * Use `geminiFast` for high-volume cheap calls (summary, scoring) and
- * `geminiDeep` for low-volume high-quality calls (report, gap analysis).
+ * Use `GEMINI_MODEL_FAST` for high-volume cheap calls (summary, scoring) and
+ * `GEMINI_MODEL_DEEP` for low-volume high-quality calls (report, gap analysis).
  *
  * Always go through `generateText` / `generateJSON` so retries, logging, and
  * future cost tracking live in one place.

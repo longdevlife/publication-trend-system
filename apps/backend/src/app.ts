@@ -2,11 +2,11 @@ import express, { type Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
-import pinoHttp from "pino-http";
+import { pinoHttp } from "pino-http";
 
 import { env } from "./config/env.js";
-import { logger } from "./lib/logger.js";
-import { errorHandler, notFoundHandler } from "./middleware/error-handler.js";
+import { logger } from "./infrastructure/logger.js";
+import { errorHandler, notFoundHandler } from "./common/middleware/error-handler.js";
 import { apiRouter } from "./routes/index.js";
 
 export function createApp(): Express {
