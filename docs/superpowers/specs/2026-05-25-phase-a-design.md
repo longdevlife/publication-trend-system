@@ -1,16 +1,10 @@
 # Phase A Design — OpenAlex Sync Pipeline + Phase A Mongoose Models
 
-**Status:** Approved (brainstorming complete — pending user spec review)
+**Status:** Approved (brainstorming complete)
 **Date:** 2026-05-25
 **Owner:** hoangtira
 **Project:** Publication Trend System (WDP301 capstone)
 **Estimated effort:** ~6-10 hours of focused implementation
-
-**Models touched:** 10 new + 3 existing (User, RefreshToken, Paper).
-**Mongo collections involved:** 12 (users, refreshtokens, research_papers,
-journals, authors, keywords, research_topics, paper_source_records,
-paper_quality_checks, api_providers, api_sync_configs, api_sync_runs)
-plus audit_logs as a 13th cross-cutting collection.
 
 ---
 
