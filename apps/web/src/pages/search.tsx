@@ -194,7 +194,7 @@ export function SearchPage() {
           <Button variant="outline" size="icon" className="h-8 w-8 text-slate-500 rounded-md border-slate-200 dark:border-slate-800" disabled>
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <Button variant="solid" className="h-8 w-8 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-md px-0">1</Button>
+          <Button variant="default" className="h-8 w-8 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded-md px-0">1</Button>
           <Button variant="ghost" className="h-8 w-8 text-slate-600 dark:text-slate-400 font-medium rounded-md px-0">2</Button>
           <Button variant="ghost" className="h-8 w-8 text-slate-600 dark:text-slate-400 font-medium rounded-md px-0">3</Button>
           <span className="px-1 text-slate-400">...</span>

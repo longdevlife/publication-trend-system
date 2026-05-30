@@ -1,5 +1,5 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { LogOut, User, Search, Bell } from "lucide-react";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { LogOut, User, Search, Bell, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useCurrentUser, useLogout } from "@/features/auth";
 import { useAuthStore } from "@/stores/auth-store";
+import { cn } from "@/utils/cn";
+
+const navItems = [
+  { to: "/search", label: "Search" },
+  { to: "/trends", label: "Trends" },
+  { to: "/reports", label: "Reports" },
+  { to: "/projects", label: "Projects" },
+] as const;
 
 export function MainLayout() {
   return (
@@ -71,19 +79,20 @@ function UserMenu() {
 
   if (!isAuthed) {
     return (
-      <div className="flex items-center gap-2">
+      <>
         <Button variant="ghost" size="sm" asChild>
           <Link to="/login">Sign in</Link>
         </Button>
         <Button size="sm" asChild>
           <Link to="/register">Sign up</Link>
         </Button>
-      </div>
+      </>
     );
   }
 
   const email = data?.user?.email ?? "Account";
   const fullName = data?.user?.fullName ?? email;
+  const role = data?.user?.role;
 
   return (
     <DropdownMenu>
@@ -102,6 +111,25 @@ function UserMenu() {
         <DropdownMenuItem onSelect={() => navigate("/dashboard")}>
           Dashboard
         </DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => navigate("/profile")}>
+          Profile
+        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => navigate("/bookmarks")}>
+          Bookmarks
+        </DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => navigate("/notifications")}>
+          Notifications
+        </DropdownMenuItem>
+        {role === "admin" && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onSelect={() => navigate("/admin/sync")}>
+              <Sparkles className="mr-2 h-4 w-4" />
+              Admin
+            </DropdownMenuItem>
+          </>
+        )}
+        <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={() => {
             logout.mutate(undefined, {
